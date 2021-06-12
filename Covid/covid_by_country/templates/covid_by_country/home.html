@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+	<div class="container">
+		<h3 class="text text-justify">
+			Global Statistics
+		</h3>
+	</div>
+	<div class="container">
+		<div class="container">
+			<div class="row">
+				<div class="col col-md alert alert-info">
+					<center>Confirmed </center>
+					<h4 class="text text-justify">
+					<center>{{ data.confirmed }}</center>
+					</h4>
+				</div>
+				<div class="col col-md alert alert-success">
+					<center>Recovered </center>
+					<h4 class="text text-justify">
+					<center>{{ data.recovered }}</center>
+					</h4>
+				</div>
+				<div class="col col-md alert alert-warning">
+					<center>Active </center>
+					<h4 class="text text-justify">
+					<center>{{ data.active }}</center>
+					</h4>
+				</div>
+				<div class="col col-md alert alert-danger">
+					<center>Deaths </center>
+					<h4 class="text text-justify">
+					<center>{{ data.deaths }}</center>
+					</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div align="center">
+		
+			<div style="width: 18rem;">
+				<div class="form-group">
+					<select class="form-control" id="sel1">
+					   {% for country in data.countries %}
+					    	<option>{{ country }}</option>
+					   {% endfor %}
+					 </select>
+				</div>
+			</div>
+	
+	</div>
+
+{% endblock %}
