@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from covid import Covid
 from .countries import countries
+from .precautions import steps
 c19 = Covid()
 data = {
 	'confirmed' : c19.get_total_confirmed_cases(),
@@ -9,6 +10,7 @@ data = {
 	'deaths' : c19.get_total_deaths(),
 	'countries' :countries
 	}
+
 def home(request):
 	if request.POST:
 		print('Got Request')
@@ -19,13 +21,15 @@ def home(request):
 			
 			return render(request,"covid_by_country/home.html",
 				{'data':data,
-				'country_data':country_data}
+				'country_data':country_data,
+				'steps':steps
+				}
 				)
 		
 		except ValueError:
 			error=f"There is no country called {country_name}"
 			
 			return render(request,"covid_by_country/home.html",
-				{'data':data,'error':error})
+				{'data':data,'error':error,'steps':steps})
 
-	return render(request,"covid_by_country/home.html",{'data':data})
+	return render(request,"covid_by_country/home.html",{'data':data,'steps':steps})

@@ -113,8 +113,39 @@
 {% endif %}
 	{% load static %}
 	<div class="container">
-		<div class="container">
-			<img class="img" src="{% static '/imgs/covidsafe.jpeg' %}">
+		<div align="center">
+			<img class="img-fluid" src="{% static '/imgs/covidsafe.jpeg' %}">
 		</div>
+	
+		{% for step in steps %}
+				<div class="card card-body bg-info text-justify">
+					<p class="text-dark">{{ step }}</p>
+				</div>
+		{% endfor %}	
 	</div>
+<hr>
+<div class="container">
+	<div align="center">
+		<h4 class="text-justify text-center"><b>Social Media and Contacts</b></h4>
+		<a href="https://twitter.com/Nandalal7896" class="btn btn-link">
+			<h3><span class="fa fa-twitter"></span></h3>
+		</a>
+		<a href="https://www.instagram.com/coding_vs_programming/" class="btn btn-link">
+			<h3><span class="fa fa-instagram"></span></h3>
+		</a>
+
+		<a href=" https://github.com/NaNdalal-dev" class="btn btn-link">
+			<h3><span class="fa fa-github"></span></h3>
+		</a>
+		<a href="https://www.youtube.com/channel/UCa7WJu7_ztmDhA0YeBQzrpg" class="btn btn-link">
+			<h3><span class="fa fa-youtube"></span></h3>
+		</a>
+		<a href=" https://www.linkedin.com/in/nandalala-dintakurthi-6327ba195/" class="btn btn-link">
+			<h3><span class="fa fa-linkedin"></span></h3>
+		</a>
+		<a href="mailto:nd90981@gmail.com" class="btn btn-link">
+			<h3><span class="fa fa-envelope"></span></h3>
+		</a>
+	</div>
+</div>
 {% endblock %}
