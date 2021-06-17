@@ -46,6 +46,9 @@
 				
 				<div class="form-group">
 					<select oninput="getcountry()" class="form-control" id="sel1">
+						{% if title %}
+						<option> {{ title }}</option>
+						{% endif %}
 					   {% for country in data.countries %}
 					    	<option>{{ country }}</option>
 					   {% endfor %}
@@ -54,7 +57,11 @@
 				<h2 class="text text-info">Or</h2>
 				<big class="text text-justify"> Enter country name: </big>
 				<div class="form-group">
+					{% if title %}
+					<input id="name" type="text" class="form-control" name="country" placeholder="ex:india" value="{{ title }}">
+					{% else %}
 					<input id="name" type="text" class="form-control" name="country" placeholder="ex:india" value="US">
+					{% endif %}
 				</div>
 
 				<div class="form-group">
@@ -114,15 +121,30 @@
 	{% load static %}
 	<div class="container">
 		<div align="center">
-			<img class="img-fluid" src="{% static '/imgs/covidsafe.jpeg' %}">
+			<img class="img-fluid" src="https://raw.githubusercontent.com/NaNdalal-dev/Covid/c31355c60cba4ab284c56f4bd3781bce9f468d90/Covid/static/imgs/covidsafe.jpeg">
 		</div>
 	
 		{% for step in steps %}
-				<div class="card card-body bg-info text-justify">
+				<div class="card card-body text-justify alert alert-secondary">
 					<p class="text-dark">{{ step }}</p>
 				</div>
 		{% endfor %}	
 	</div>
+<hr>
+<div class="container">
+	<div align="center">
+		<h3 class="text-justify text-center"><b>Share</b></h3>
+		<a href="http://twitter.com/share?text=Get Covid data globally&url={{path}}" class="btn btn-link">
+			<h3><span class="fa fa-twitter"></span></h3>
+		</a>
+		<a href="mailto:?subject=Get Covid data globally&body={{path}}" class="btn btn-link">
+			<h3><span class="fa fa-envelope"></span></h3>
+		</a>
+		<a href="https://api.whatsapp.com/send?phone=&text=Get Covid data globally | {{path}}" class="btn btn-link">
+			<h3><span class="fa fa-whatsapp"></span></h3>
+		</a>
+	</div>
+</div>
 <hr>
 <div class="container">
 	<div align="center">

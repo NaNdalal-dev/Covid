@@ -10,19 +10,20 @@ data = {
 	'deaths' : c19.get_total_deaths(),
 	'countries' :countries
 	}
+path = 'https://get-global-covid-data.herokuapp.com/'.strip()
 
 def home(request):
 	if request.POST:
-		print('Got Request')
 		country_name = request.POST['country']
-		
 		try:
 			country_data = c19.get_status_by_country_name(country_name)
 			
 			return render(request,"covid_by_country/home.html",
 				{'data':data,
 				'country_data':country_data,
-				'steps':steps
+				'steps':steps,
+				'title':country_name,
+				'path':path,
 				}
 				)
 		
@@ -30,6 +31,7 @@ def home(request):
 			error=f"There is no country called {country_name}"
 			
 			return render(request,"covid_by_country/home.html",
-				{'data':data,'error':error,'steps':steps})
+				{'data':data,'error':error,'steps':steps,'path':path,})
 
-	return render(request,"covid_by_country/home.html",{'data':data,'steps':steps})
+	return render(request,"covid_by_country/home.html",{'data':data,'steps':steps,
+		'path':path,})
